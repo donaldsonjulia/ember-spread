@@ -1,11 +1,11 @@
-import {expect} from 'chai'
-import Ember from 'ember'
-const {Component, computed} = Ember
-import {$hook, initialize as initializeHook} from 'ember-hook'
+import Component from '@ember/component';
+import EmberObject, { computed } from '@ember/object';
+import { expect } from 'chai'
+import { $hook, initialize as initializeHook } from 'ember-hook'
 import SpreadMixin from 'ember-spread'
-import {integration} from 'ember-test-utils/test-support/setup-component-test'
+import { integration } from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
-import {beforeEach, describe, it} from 'mocha'
+import { beforeEach, describe, it } from 'mocha'
 
 import sinon from 'sinon'
 
@@ -23,7 +23,7 @@ const SpreadComponent = Component.extend(SpreadMixin, {
       {{mergedPropertyJson}}
     </div>
   `,
-  mergedProperty: {baseValue: true},
+  mergedProperty: {baseValue: true}, // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
   mergedPropertyJson: computed('mergedProperty', function () {
     return JSON.stringify(this.get('mergedProperty'))
   }).readOnly(),
@@ -166,7 +166,7 @@ describe(test.label, function () {
   describe('when providing a source binding', function () {
     describe('and using the default (options) spread property', function () {
       beforeEach(function () {
-        this.set('options', Ember.Object.create({}))
+        this.set('options', EmberObject.create({}))
 
         this.render(hbs`
           {{spread-test
@@ -217,7 +217,7 @@ describe(test.label, function () {
 
     describe('and using a custom spread property', function () {
       beforeEach(function () {
-        this.set('options', Ember.Object.create({}))
+        this.set('options', EmberObject.create({}))
 
         this.render(hbs`
           {{spread-test
@@ -270,7 +270,7 @@ describe(test.label, function () {
     describe('and the component is destroyed', function () {
       beforeEach(function () {
         this.setProperties({
-          options: Ember.Object.create({}),
+          options: EmberObject.create({}),
           condition: true
         })
 

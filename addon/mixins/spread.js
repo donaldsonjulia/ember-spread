@@ -4,10 +4,15 @@
  * Spreads the properties from a source object against the root level of the local object
  */
 
-import Ember from 'ember'
-const {Mixin, assert, computed, defineProperty, get, isArray, isNone, makeArray, typeOf} = Ember
+import { readOnly } from '@ember/object/computed';
+
+import Mixin from '@ember/object/mixin';
+import { assert } from '@ember/debug';
+import { get, defineProperty } from '@ember/object';
+import { makeArray, isArray } from '@ember/array';
+import { typeOf, isNone } from '@ember/utils';
 const {assign, keys} = Object
-import {PropTypes} from 'ember-prop-types'
+import { PropTypes } from 'ember-prop-types'
 
 // Constants
 const SPREAD_PROPERTY = 'options'
@@ -82,7 +87,7 @@ export default Mixin.create({
             listener.targetObject.set(key, value)
           } else {
             defineProperty(listener.targetObject, key,
-              computed.readOnly(`${listener.targetProperty}.${key}`)
+              readOnly(`${listener.targetProperty}.${key}`)
             )
           }
         })
@@ -164,7 +169,7 @@ export default Mixin.create({
         return
       }
 
-      defineProperty(this, key, computed.readOnly(`${spreadProperty}.${key}`))
+      defineProperty(this, key, readOnly(`${spreadProperty}.${key}`))
     })
   },
 

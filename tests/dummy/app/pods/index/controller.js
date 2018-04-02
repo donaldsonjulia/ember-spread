@@ -1,9 +1,9 @@
-import Ember from 'ember'
-const {Controller, computed} = Ember
+import Controller from '@ember/controller';
+import EmberObject, { computed } from '@ember/object';
 
 export default Controller.extend({
   // BEGIN-SNIPPET dot-options
-  dotOptions: Ember.Object.create({
+  dotOptions: EmberObject.create({
     size: 20,
     speak: 'None of my shirts fit...'
   }),
@@ -11,14 +11,14 @@ export default Controller.extend({
 
   // BEGIN-SNIPPET were-options
   wereShape: 'normal-dot',
-  wereOptions: Ember.Object.create({
+  wereOptions: EmberObject.create({
     size: 40,
     speak: 'Ok, this is getting ridiculous...'
   }),
   // END-SNIPPET
 
   // BEGIN-SNIPPET advanced-options
-  noises: ['Grunt', 'growl'],
+  noises: ['Grunt', 'growl'], // eslint-disable-line ember/avoid-leaking-state-in-ember-objects
   verbalizedNoises: computed('noises.[]', function () {
     let verbalizedNoises = ''
     this.get('noises').forEach((noise) => {
@@ -37,7 +37,7 @@ export default Controller.extend({
   // END-SNIPPET
 
   hauntShape: 'normal-dot',
-  hauntOptions: Ember.Object.create({
+  hauntOptions: EmberObject.create({
     size: 16,
     color: 'rgb(220, 36, 46)'
   }),
