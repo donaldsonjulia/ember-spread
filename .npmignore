@@ -4,7 +4,6 @@
 /tests
 /tmp
 **/.gitkeep
-.bowerrc
 .editorconfig
 .ember-cli
 .eslintignore
@@ -21,3 +20,8 @@ ember-cli-build.js
 dependency-snapshot.json
 jsconfig.json
 testem.js
+
+# ember-try
+.node_modules.ember-try/
+bower.json.ember-try
+package.json.ember-try
