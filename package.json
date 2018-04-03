@@ -61,7 +61,7 @@
   ],
   "dependencies": {
     "ember-cli-babel": "^6.6.0",
-    "ember-prop-types": "^7.0.1"
+    "ember-prop-types": "git://github.com/juwara0/ember-prop-types#upgradeEmberCli-2-18-2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
